@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brigg Wolfe</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+   .hero {
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url('bike.jpg');
+  background-size: 100% auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  padding: 40px 0;
+  text-align: center;
+  width: 100%;
+}
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      color: #ddd;
+    }
+    .stat-card {
+      border: none;
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+      background-color: #f8f9fa;
+    }
+    .stat-card .icon {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    .stat-card h5 {
+      font-weight: 700;
+      color: #1a2e4a;
+    }
+    .stat-card p {
+      color: #666;
+      font-size: 0.9rem;
+    }
+    .section-title {
+      color: #1a2e4a;
+      font-weight: 700;
+      margin-bottom: 30px;
+    }
+    footer {
+      background-color: #1a2e4a;
+      color: #adb5bd;
+      text-align: center;
+      padding: 20px;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1a2e4a;">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">Brigg Wolfe</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="resume.html">Résumé</a></li>
+          <li class="nav-item"><a class="nav-link" href="scratch.html">Triathlon Page</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <div class="container">
+      <h1>Brigg Wolfe</h1>
+      <p>Swim. Bike. Run. Repeat.</p>
+      <a href="resume.html" class="btn btn-light btn-lg mt-3 me-2">View Résumé</a>
+      <a href="scratch.html" class="btn btn-outline-light btn-lg mt-3">Triathlon Page</a>
+    </div>
+  </div>
+
+  <!-- Three Disciplines -->
+  <div class="container my-5">
+    <h2 class="text-center section-title">The Three Disciplines</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="stat-card shadow-sm">
+          <div class="icon">🏊</div>
+          <h5>Swim</h5>
+          <p>The race begins in the water. Endurance, technique, and breathing efficiency are everything in the open water swim.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat-card shadow-sm">
+          <div class="icon">🚴</div>
+          <h5>Bike</h5>
+          <p>The longest leg of the race. Power output, aerodynamics, and smart pacing determine how much you have left for the run.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat-card shadow-sm">
+          <div class="icon">🏃</div>
+          <h5>Run</h5>
+          <p>The final test. Running on tired legs after swimming and cycling separates those who trained smart from those who didn't.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Race Distances -->
+  <div style="background-color: #1a2e4a; color: white; padding: 50px 0;">
+    <div class="container">
+      <h2 class="text-center mb-4" style="font-weight:700;">Race Distances</h2>
+      <div class="row text-center g-4">
+        <div class="col-6 col-md-3">
+          <h4 class="fw-bold">Sprint</h4>
+          <p class="mb-1">750m Swim</p>
+          <p class="mb-1">20km Bike</p>
+          <p>5km Run</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <h4 class="fw-bold">Olympic</h4>
+          <p class="mb-1">1.5km Swim</p>
+          <p class="mb-1">40km Bike</p>
+          <p>10km Run</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <h4 class="fw-bold">Half Iron</h4>
+          <p class="mb-1">1.9km Swim</p>
+          <p class="mb-1">90km Bike</p>
+          <p>21.1km Run</p>
+        </div>
+        <div class="col-6 col-md-3">
+          <h4 class="fw-bold">Full Ironman</h4>
+          <p class="mb-1">3.86km Swim</p>
+          <p class="mb-1">180km Bike</p>
+          <p>42.2km Run</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quote -->
+  <div class="container my-5 text-center">
+    <h2 class="section-title">The Ironman Motto</h2>
+    <blockquote class="blockquote">
+      <p class="fs-4 fst-italic text-muted">"Swim 2.4 miles. Bike 112 miles. Run 26.2 miles. Brag for the rest of your life."</p>
+    </blockquote>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p class="mb-0">Brigg Wolfe &copy; 2025 &nbsp;|&nbsp; Built with HTML, CSS & Bootstrap</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

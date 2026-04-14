@@ -1,0 +1,374 @@
+Create app.html
+
+Click the New File icon in the left sidebar
+Name it app.html and hit Enter
+Paste this entire code in:
+
+html<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Triathlon Race Planner | Brigg Wolfe</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #0d1b2a; color: #e0e0e0; }
+
+    header {
+      background: #1a2e4a;
+      color: white;
+      padding: 20px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 4px solid #e07b2a;
+    }
+    header h1 { font-size: 1.3rem; font-weight: 600; }
+    header a { color: #adb5bd; font-size: 14px; text-decoration: none; }
+    header a:hover { color: white; }
+
+    .wrap { max-width: 720px; margin: 40px auto; padding: 0 16px 60px; }
+    .subtitle { font-size: 14px; color: #adb5bd; margin-bottom: 24px; }
+
+    .distance-tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+    .dtab {
+      padding: 7px 16px;
+      border: 1px solid #2c3e50;
+      border-radius: 8px;
+      font-size: 13px;
+      cursor: pointer;
+      background: #1a2e4a;
+      color: #adb5bd;
+      transition: all 0.15s;
+    }
+    .dtab.active { background: #e07b2a; color: white; border-color: #e07b2a; }
+    .dtab:hover:not(.active) { background: #2c3e50; color: white; }
+
+    .legs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 20px; }
+    .leg-card {
+      background: #1a2e4a;
+      border: 1px solid #2c3e50;
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .leg-icon { font-size: 20px; margin-bottom: 6px; }
+    .leg-label { font-size: 12px; color: #adb5bd; margin-bottom: 2px; }
+    .leg-dist { font-size: 13px; font-weight: 600; color: #e07b2a; margin-bottom: 12px; }
+    .leg-card label { font-size: 12px; color: #adb5bd; display: block; margin-bottom: 4px; }
+    .leg-card input {
+      width: 100%;
+      padding: 7px 10px;
+      border: 1px solid #2c3e50;
+      border-radius: 7px;
+      font-size: 14px;
+      background: #0d1b2a;
+      color: #e0e0e0;
+    }
+    .leg-card input:focus { outline: none; border-color: #e07b2a; }
+    .pace-hint { font-size: 11px; color: #adb5bd; margin-top: 5px; }
+
+    .transition-row { display: flex; gap: 14px; margin-bottom: 20px; }
+    .t-input-wrap { flex: 1; }
+    .t-input-wrap label { font-size: 12px; color: #adb5bd; display: block; margin-bottom: 4px; }
+    .t-input-wrap input {
+      width: 100%;
+      padding: 7px 10px;
+      border: 1px solid #2c3e50;
+      border-radius: 7px;
+      font-size: 14px;
+      background: #0d1b2a;
+      color: #e0e0e0;
+    }
+
+    .results-box {
+      background: #1a2e4a;
+      border: 1px solid #2c3e50;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .results-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: #adb5bd;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+    .split-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .split-label { font-size: 13px; color: #adb5bd; width: 60px; }
+    .split-bar-wrap { flex: 1; background: #0d1b2a; border-radius: 4px; height: 8px; overflow: hidden; }
+    .split-bar { height: 8px; border-radius: 4px; transition: width 0.4s; }
+    .split-time { font-size: 13px; font-weight: 600; color: #e0e0e0; width: 64px; text-align: right; }
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-top: 1px solid #2c3e50;
+      padding-top: 14px;
+      margin-top: 4px;
+    }
+    .total-label { font-size: 14px; color: #adb5bd; }
+    .total-time { font-size: 30px; font-weight: 700; color: #e07b2a; }
+
+    .tips-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
+    .tip-card {
+      background: #1a2e4a;
+      border: 1px solid #2c3e50;
+      border-radius: 12px;
+      padding: 14px;
+    }
+    .tip-head { font-size: 12px; font-weight: 600; margin-bottom: 6px; }
+    .tip-body { font-size: 12px; color: #adb5bd; line-height: 1.55; }
+
+    footer {
+      background-color: #1a2e4a;
+      color: #adb5bd;
+      text-align: center;
+      padding: 20px;
+      margin-top: 60px;
+      border-top: 4px solid #e07b2a;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 520px) {
+      .legs-grid, .tips-grid { grid-template-columns: 1fr; }
+      .transition-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🏊 🚴 🏃 Triathlon Race Planner</h1>
+    <a href="scratch.html">← Back to Triathlon Page</a>
+  </header>
+
+  <div class="wrap">
+    <p class="subtitle">Select your race distance, enter your target paces, and see your estimated finish time and training tips.</p>
+
+    <div class="distance-tabs">
+      <button class="dtab active" onclick="setDist('sprint', this)">Sprint</button>
+      <button class="dtab" onclick="setDist('olympic', this)">Olympic</button>
+      <button class="dtab" onclick="setDist('half', this)">Half-Iron (70.3)</button>
+      <button class="dtab" onclick="setDist('full', this)">Full Ironman</button>
+    </div>
+
+    <div class="legs-grid">
+      <div class="leg-card">
+        <div class="leg-icon">🏊</div>
+        <div class="leg-label">Swim</div>
+        <div class="leg-dist" id="swim-dist">750 m</div>
+        <label>Pace (min/100m)</label>
+        <input type="text" id="swim-pace" value="2:30" oninput="calc()" placeholder="2:30">
+        <div class="pace-hint" id="swim-hint"></div>
+      </div>
+      <div class="leg-card">
+        <div class="leg-icon">🚴</div>
+        <div class="leg-label">Bike</div>
+        <div class="leg-dist" id="bike-dist">20 km</div>
+        <label>Speed (km/h)</label>
+        <input type="text" id="bike-speed" value="30" oninput="calc()" placeholder="30">
+        <div class="pace-hint" id="bike-hint"></div>
+      </div>
+      <div class="leg-card">
+        <div class="leg-icon">🏃</div>
+        <div class="leg-label">Run</div>
+        <div class="leg-dist" id="run-dist">5 km</div>
+        <label>Pace (min/km)</label>
+        <input type="text" id="run-pace" value="5:30" oninput="calc()" placeholder="5:30">
+        <div class="pace-hint" id="run-hint"></div>
+      </div>
+    </div>
+
+    <div class="transition-row">
+      <div class="t-input-wrap">
+        <label>T1 transition — swim to bike (minutes)</label>
+        <input type="number" id="t1" value="3" min="0" max="30" step="1" oninput="calc()">
+      </div>
+      <div class="t-input-wrap">
+        <label>T2 transition — bike to run (minutes)</label>
+        <input type="number" id="t2" value="2" min="0" max="30" step="1" oninput="calc()">
+      </div>
+    </div>
+
+    <div class="results-box">
+      <div class="results-title">Estimated splits</div>
+      <div class="split-row">
+        <span class="split-label">Swim</span>
+        <div class="split-bar-wrap"><div class="split-bar" id="bar-swim" style="background:#2a7fc1;width:0%"></div></div>
+        <span class="split-time" id="t-swim">--:--</span>
+      </div>
+      <div class="split-row">
+        <span class="split-label">T1</span>
+        <div class="split-bar-wrap"><div class="split-bar" id="bar-t1" style="background:#adb5bd;width:0%"></div></div>
+        <span class="split-time" id="t-t1">--:--</span>
+      </div>
+      <div class="split-row">
+        <span class="split-label">Bike</span>
+        <div class="split-bar-wrap"><div class="split-bar" id="bar-bike" style="background:#e07b2a;width:0%"></div></div>
+        <span class="split-time" id="t-bike">--:--</span>
+      </div>
+      <div class="split-row">
+        <span class="split-label">T2</span>
+        <div class="split-bar-wrap"><div class="split-bar" id="bar-t2" style="background:#adb5bd;width:0%"></div></div>
+        <span class="split-time" id="t-t2">--:--</span>
+      </div>
+      <div class="split-row">
+        <span class="split-label">Run</span>
+        <div class="split-bar-wrap"><div class="split-bar" id="bar-run" style="background:#2a8a4a;width:0%"></div></div>
+        <span class="split-time" id="t-run">--:--</span>
+      </div>
+      <div class="total-row">
+        <span class="total-label">Total finish time</span>
+        <span class="total-time" id="t-total">--:--:--</span>
+      </div>
+    </div>
+
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-head" style="color:#2a7fc1">Swim tip</div>
+        <div class="tip-body" id="tip-swim">Enter your swim pace to get a tip.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-head" style="color:#e07b2a">Bike tip</div>
+        <div class="tip-body" id="tip-bike">Enter your bike speed to get a tip.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-head" style="color:#2a8a4a">Run tip</div>
+        <div class="tip-body" id="tip-run">Enter your run pace to get a tip.</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Brigg Wolfe &copy; 2025 | Triathlon Race Planner</p>
+  </footer>
+
+  <script>
+    const distances = {
+      sprint:  { swim: 0.75,  bike: 20,  run: 5    },
+      olympic: { swim: 1.5,   bike: 40,  run: 10   },
+      half:    { swim: 1.93,  bike: 90,  run: 21.1 },
+      full:    { swim: 3.86,  bike: 180, run: 42.2 }
+    };
+    const distLabels = {
+      sprint:  { swim: '750 m',    bike: '20 km',  run: '5 km'    },
+      olympic: { swim: '1,500 m',  bike: '40 km',  run: '10 km'   },
+      half:    { swim: '1,930 m',  bike: '90 km',  run: '21.1 km' },
+      full:    { swim: '3,860 m',  bike: '180 km', run: '42.2 km' }
+    };
+    let currentDist = 'sprint';
+
+    function setDist(d, btn) {
+      currentDist = d;
+      document.querySelectorAll('.dtab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const lbl = distLabels[d];
+      document.getElementById('swim-dist').textContent = lbl.swim;
+      document.getElementById('bike-dist').textContent = lbl.bike;
+      document.getElementById('run-dist').textContent = lbl.run;
+      calc();
+    }
+
+    function parsePace(str) {
+      const parts = str.trim().split(':');
+      if (parts.length === 2) {
+        const m = parseFloat(parts[0]);
+        const s = parseFloat(parts[1]);
+        if (!isNaN(m) && !isNaN(s)) return m + s / 60;
+      }
+      const v = parseFloat(str);
+      return isNaN(v) ? null : v;
+    }
+
+    function fmtTime(mins) {
+      const m = Math.floor(mins);
+      const s = Math.round((mins - m) * 60);
+      return m + ':' + String(s).padStart(2, '0');
+    }
+
+    function fmtHMS(totalMins) {
+      const h = Math.floor(totalMins / 60);
+      const m = Math.floor(totalMins % 60);
+      const s = Math.round((totalMins % 1) * 60);
+      return h + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+    }
+
+    function setBar(id, pct) {
+      document.getElementById(id).style.width = Math.min(100, Math.max(2, pct)) + '%';
+    }
+
+    function swimTip(p) {
+      if (p < 1.5) return 'Elite pace! Focus on maintaining form and breathing rhythm across the full distance.';
+      if (p < 2.0) return 'Strong swimmer. Work on bilateral breathing and drafting off other athletes.';
+      if (p < 2.5) return 'Solid pace. Try adding pull buoy sets to improve stroke efficiency.';
+      if (p < 3.5) return 'Good foundation. Focus on 2x per week swim sessions with drills like catch-up and fingertip drag.';
+      return 'Keep it up! Consistent swim practice 2-3x/week will yield fast gains. Consider a masters swim group.';
+    }
+
+    function bikeTip(kmh) {
+      if (kmh > 40) return 'Excellent speed! Focus on aero position and power consistency rather than surging.';
+      if (kmh > 33) return 'Strong cyclist. Practice nutrition on the bike — calories in equals energy for the run.';
+      if (kmh > 27) return 'Good pace. Work on cadence (85-95 rpm) and threshold intervals to push speed up.';
+      if (kmh > 20) return 'Building base. Long endurance rides on weekends plus 1 interval session will improve quickly.';
+      return 'Every ride counts. Aim for 3x/week cycling and gradually increase distance before adding intensity.';
+    }
+
+    function runTip(p) {
+      if (p < 4.0) return 'Fast runner! Focus on brick workouts (bike-to-run) to nail race-day transitions.';
+      if (p < 5.0) return 'Strong pace. Practice negative splits — start slightly slower and finish strong.';
+      if (p < 6.0) return 'Solid pace. Add one tempo run per week to push your lactate threshold higher.';
+      if (p < 7.5) return 'Good base. Build weekly mileage by 10% per week and include brick workouts.';
+      return 'Stay consistent! Run 3x/week and focus on easy aerobic effort — speed comes with base mileage.';
+    }
+
+    function calc() {
+      const d = distances[currentDist];
+      const swimPace  = parsePace(document.getElementById('swim-pace').value);
+      const bikeSpeed = parsePace(document.getElementById('bike-speed').value);
+      const runPace   = parsePace(document.getElementById('run-pace').value);
+      const t1 = parseFloat(document.getElementById('t1').value) || 0;
+      const t2 = parseFloat(document.getElementById('t2').value) || 0;
+
+      const swimMins = swimPace ? (d.swim * 1000 / 100) * swimPace : null;
+      const bikeMins = (bikeSpeed && bikeSpeed > 0) ? (d.bike / bikeSpeed) * 60 : null;
+      const runMins  = runPace ? d.run * runPace : null;
+
+      const valid = swimMins !== null && bikeMins !== null && runMins !== null;
+      const total = valid ? swimMins + t1 + bikeMins + t2 + runMins : null;
+
+      document.getElementById('t-swim').textContent  = swimMins ? fmtTime(swimMins) : '--:--';
+      document.getElementById('t-t1').textContent    = fmtTime(t1);
+      document.getElementById('t-t2').textContent    = fmtTime(t2);
+      document.getElementById('t-bike').textContent  = bikeMins ? fmtTime(bikeMins) : '--:--';
+      document.getElementById('t-run').textContent   = runMins  ? fmtTime(runMins)  : '--:--';
+      document.getElementById('t-total').textContent = total    ? fmtHMS(total)     : '--:--:--';
+
+      if (total) {
+        setBar('bar-swim', (swimMins / total) * 100);
+        setBar('bar-t1',   (t1 / total) * 100);
+        setBar('bar-bike', (bikeMins / total) * 100);
+        setBar('bar-t2',   (t2 / total) * 100);
+        setBar('bar-run',  (runMins / total) * 100);
+      }
+
+      if (swimPace) {
+        document.getElementById('swim-hint').textContent = fmtTime(swimMins) + ' total swim time';
+        document.getElementById('tip-swim').textContent  = swimTip(swimPace);
+      }
+      if (bikeSpeed) {
+        document.getElementById('bike-hint').textContent = fmtTime(bikeMins) + ' total bike time';
+        document.getElementById('tip-bike').textContent  = bikeTip(bikeSpeed);
+      }
+      if (runPace) {
+        document.getElementById('run-hint').textContent = fmtTime(runMins) + ' total run time';
+        document.getElementById('tip-run').textContent  = runTip(runPace);
+      }
+    }
+
+    calc();
+  </script>
+
+</body>
+</html>
